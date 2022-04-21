@@ -1,6 +1,5 @@
-import logo from './logo.svg';
-import './App.css';
-import ViewPort from './ViewPort';
+
+import ViewPort from './Components/ViewPort';
 
 function App() {
   return (
