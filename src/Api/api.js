@@ -1,8 +1,8 @@
 
 
 
-const fetchSubmit = async (searchString='', pageNum=1) =>{
-    console.log('fetch')
+const fetchSubmit = async (searchString, pageNum) =>{
+    console.log(pageNum, 'fetch')
 
     const dataArr = []
     
