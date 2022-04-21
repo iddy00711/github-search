@@ -1,5 +1,5 @@
 import React, {useState} from 'react'
-import {Link, Routes, Route, BrowserRouter} from 'react-router-dom'
+import {Link, Routes, Route, BrowserRouter, useNavigate, NavLink} from 'react-router-dom'
 import '../Css/search_page.css'
 import stringCheck from '../Utlis/Utlis'
 import pic from '../images/arrow.png'
@@ -7,24 +7,21 @@ import pic from '../images/arrow.png'
 function SearchPage() {
 
     const [text, changeText] = useState('')
-
-    //console.log(stringCheck(text))
-
-    const handleSubmit = (e)=>{
-        e.preventDefault()
-
-
-
-    }
+    const navigate = useNavigate();
     
     return (
         <div class='search-page'>
             
                 <input class='search' type='text' onChange={e=> changeText(e.target.value)}></input>
 
-               <div className='button-search' onClick={()=>handleSubmit}>
+              
+
+                        
+               <div className='button-search' onClick={()=>{navigate('/ResultsPage', {state:text})}}>
+                 
                     <img class='arrow' src= {pic} alt='arrow'/>
                </div>
+                   
 
                 <div class='instructions'>
 

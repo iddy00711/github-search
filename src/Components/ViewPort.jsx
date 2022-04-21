@@ -6,13 +6,14 @@ import {
     Link
   } from "react-router-dom";
   import SearchPage from './SearchPage';
+  import ResultsPage from './ResultsPage'
 
 function ViewPort() {
     return (
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<SearchPage/>} />
-        {/* <Route path='/results' element={<ResultsPage />} /> */}
+        <Route path='/ResultsPage' element={<ResultsPage/>} /> 
       </Routes>
     </BrowserRouter> 
     )
