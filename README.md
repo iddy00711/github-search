@@ -1,3 +1,9 @@
+1. Copy or download the code onto your desktop computer by copying and pasting the link above and then accessing your terminal and typing in 'git clone https://github.com/iddy00711/github-search'
+2. Once you have the project installed, open the project up via VS code and then open the terminal and tyep one 'npm i'
+3. To run the project type in 'npm start' and follow the on screen instructions.
+
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
