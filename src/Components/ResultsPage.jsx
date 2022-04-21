@@ -7,17 +7,18 @@ import '../Css/results-page.css'
 function ResultsPage(props) {
     const {ResultsPage} = useParams()
     const location = useLocation()
-    const text = location.state
+    const searchString = location.state
 
      const [searchResults, updateSearchResults] = useState([])
      const [isLoading, setIsLoading] = useState(false)
-    // const [currentPage, setCurrentPage] = useState(1)
-    // const [postsPerPage, setPostsPerPage] = useState(25)
+     const [pageNum, setPageNum] = useState(1)
+   
+     const pageArr = [...Array(10).keys()]
 
     useEffect(()=>{
-        console.log('useff')
+        console.log(pageNum, 'useeffect')
         setIsLoading(true)
-        fetchSubmit(text)
+        fetchSubmit(searchString, pageNum)
         .then(res=>{
             updateSearchResults(res)
             setIsLoading(false)
@@ -26,15 +27,8 @@ function ResultsPage(props) {
         .catch(err=>{
             console.log(err)
         })
-    }, [])
-
-    // const indexOfLastPost = currentPage * postsPerPage
-    // const indexOfFirstPost = indexOfLastPost = postsPerPage
-    // const currentPosts = searchResults.slice(indexOfFirstPost, indexOfLastPost)
-
-    // const paginate = (pageNumber) =>{setCurrentPage(pageNumber)}
-
-    
+    }, [pageNum])  
+      
     return (
 
         <div class='loading-container'>
@@ -52,16 +46,19 @@ function ResultsPage(props) {
                         const {id, name, login,stargazers_count} = result
                          return (
                              <div class='sub-table'  key={id}>
-                         <li key={id *(i+1)} class='result'>{name}</li>
-                         <li key={id*(i+2)} class='result'>{login}</li>
-                         <li key={id*(i+2)} class='result'>{stargazers_count}</li>
+                         <li key={id *(i+1)*(Math.random()*10)} class='result'>{name}</li>
+                         <li key={id*(i+2)*(Math.random()*10)} class='result'>{login}</li>
+                         <li key={id*(i+2)*(Math.random()*10)} class='result'>{stargazers_count}</li>
                          </div>
-                         )
-
-                    }
-                    )
+                         ) } )
                 }
-            </div>}
+                <div class='pagination'>
+                    {pageArr.map((_,i)=>{
+                       return <div class='page-num' key={i*(Math.random()*10)} onClick={()=>{setPageNum(i+1)}}>{i+1}</div>
+                    })}
+                </div>
+            </div>
+            }
         </div>
         
     )
