@@ -2,13 +2,11 @@
 
 
 const fetchSubmit = async (searchString, pageNum) =>{
-    console.log(pageNum, 'fetch')
 
     const dataArr = []
     
     const githubApi = `https://api.github.com/search/repositories?q=${searchString}+language:assembly&sort=stars&order=desc&per_page=25&page=${pageNum}`
     
-
     const res = await fetch(githubApi)
     .then(data =>{return data.json()})
     .then(
@@ -22,21 +20,10 @@ const fetchSubmit = async (searchString, pageNum) =>{
                     login,
                     stargazers_count
                 }
-
-                dataArr.push(resObj)
-            }
-
-            )
-        }
-    
-    )
+             dataArr.push(resObj)})})
     .catch(err=> console.log(err))
 
-
-    
-return dataArr
-    
-
+    return dataArr
 }
 
 

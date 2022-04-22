@@ -28,7 +28,7 @@ function ResultsPage(props) {
             console.log(err)
         })
     }, [pageNum])  
-      
+
     return (
 
         <div class='loading-container'>
@@ -41,17 +41,40 @@ function ResultsPage(props) {
                     <div class='title'>Author</div>
                     <div class='title'>Stars</div>
                 </div>
-                {
-                    searchResults.map((result, i)=>{
-                        const {id, name, login,stargazers_count} = result
-                         return (
-                             <div class='sub-table'  key={id}>
-                         <li key={id *(i+1)*(Math.random()*10)} class='result'>{name}</li>
-                         <li key={id*(i+2)*(Math.random()*10)} class='result'>{login}</li>
-                         <li key={id*(i+2)*(Math.random()*10)} class='result'>{stargazers_count}</li>
-                         </div>
-                         ) } )
-                }
+                <div class='table-1'>
+
+                    {
+                        searchResults.map((result, i)=>{
+                            const {id, name, login,stargazers_count} = result
+                            return (
+                                <div class='sub-table'  key={id}>
+                            <li key={id *(i+1)*(Math.random()*10)} class='result'>{name}</li>
+                                </div>)})
+                            
+                    }
+                </div>
+                <div class='table-2'>
+
+                    {
+                        searchResults.map((result, i)=>{
+                            const {id, name, login,stargazers_count} = result
+                            return (
+                                <div class='sub-table'  key={id}>
+                            <li key={id*(i+2)*(Math.random()*10)} class='result'>{login}</li>
+                            
+                                </div>)})
+                    }
+                </div>
+                <div class='table-3'>
+
+                    {searchResults.map((result, i)=>{
+                            const {id, name, login,stargazers_count} = result
+                            return (
+                                <div class='sub-table'  key={id}>
+                            <li key={id*(i+3)*(Math.random()*10)} class='result'>{stargazers_count}</li>
+                                </div>)})}
+                </div>
+
                 <div class='pagination'>
                     {pageArr.map((_,i)=>{
                        return <div class='page-num' key={i*(Math.random()*10)} onClick={()=>{setPageNum(i+1)}}>{i+1}</div>
@@ -59,9 +82,7 @@ function ResultsPage(props) {
                 </div>
             </div>
             }
-        </div>
-        
-    )
+        </div>)
 }
 
 export default ResultsPage

@@ -13,16 +13,12 @@ function SearchPage() {
         <div class='search-page'>
             
                 <input class='search' type='text' onChange={e=> changeText(e.target.value)}></input>
-
-              
-
                         
                <div className='button-search' onClick={()=>{navigate('/ResultsPage', {state:text})}}>
                  
                     <img class='arrow' src= {pic} alt='arrow'/>
                </div>
                    
-
                 <div class='instructions'>
 
                     {stringCheck(text)=== 'No input'? 
