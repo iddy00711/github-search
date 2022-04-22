@@ -9,14 +9,14 @@ function ResultsPage(props) {
     const location = useLocation()
     const searchString = location.state
 
-     const [searchResults, updateSearchResults] = useState([])
-     const [isLoading, setIsLoading] = useState(false)
-     const [pageNum, setPageNum] = useState(1)
+    const [searchResults, updateSearchResults] = useState([])
+    const [isLoading, setIsLoading] = useState(false)
+    const [pageNum, setPageNum] = useState(1)
    
-     const pageArr = [...Array(10).keys()]
+    const pageArr = [...Array(10).keys()]
 
     useEffect(()=>{
-        console.log(pageNum, 'useeffect')
+        
         setIsLoading(true)
         fetchSubmit(searchString, pageNum)
         .then(res=>{
@@ -40,39 +40,37 @@ function ResultsPage(props) {
                     <div class='title'>Project Name</div>
                     <div class='title'>Author</div>
                     <div class='title'>Stars</div>
-                </div>
+            </div>
+
                 <div class='table-1'>
 
-                    {
-                        searchResults.map((result, i)=>{
-                            const {id, name, login,stargazers_count} = result
+                    {searchResults.map((result, i)=>{
+                            const {id, name} = result
                             return (
                                 <div class='sub-table'  key={id}>
                             <li key={id *(i+1)*(Math.random()*10)} class='result'>{name}</li>
-                                </div>)})
-                            
+                                </div>)})      
                     }
                 </div>
                 <div class='table-2'>
 
-                    {
-                        searchResults.map((result, i)=>{
-                            const {id, name, login,stargazers_count} = result
+                    {searchResults.map((result, i)=>{
+                            const {id, login} = result
                             return (
                                 <div class='sub-table'  key={id}>
-                            <li key={id*(i+2)*(Math.random()*10)} class='result'>{login}</li>
-                            
+                                   <li key={id*(i+2)*(Math.random()*10)} class='result'>{login}</li>
                                 </div>)})
                     }
                 </div>
                 <div class='table-3'>
 
                     {searchResults.map((result, i)=>{
-                            const {id, name, login,stargazers_count} = result
+                            const {id,stargazers_count} = result
                             return (
                                 <div class='sub-table'  key={id}>
-                            <li key={id*(i+3)*(Math.random()*10)} class='result'>{stargazers_count}</li>
-                                </div>)})}
+                                    <li key={id*(i+3)*(Math.random()*10)} class='result'>{stargazers_count}</li>
+                                </div>)})
+                    }
                 </div>
 
                 <div class='pagination'>
