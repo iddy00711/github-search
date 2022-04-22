@@ -1,18 +1,28 @@
+
+//to check input string
 function stringCheck(str){
     if(str === ''){
         return 'No input'
     }
     else{
-
         const arr = str.split(' ')
         if(arr.length > 1){
             return 'string too large'
         }
         else{
             return 'string ok'
-        }
-    }
+        }}
 
 }
+//to manage if no data is given from server
 
-export default stringCheck
+function emptyData(data){
+    if(data.length === 0){
+        return false
+    }
+    else{
+        return true
+    }
+}
+
+export {stringCheck, emptyData}
