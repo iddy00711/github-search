@@ -31,7 +31,7 @@ function ResultsPage(props) {
 
     return (
 
-        <div class='loading-container'>
+        <div class='results-container'>
             {isLoading?
             <div class='loading-text'>...Loading</div>
             :

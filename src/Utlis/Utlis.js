@@ -1,6 +1,6 @@
 
 //to check input string
-function stringCheck(str){
+export default function stringCheck(str){
     if(str === ''){
         return 'No input'
     }
